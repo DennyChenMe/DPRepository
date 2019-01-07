@@ -1,7 +1,9 @@
 #pragma once
 
 #include "IElfFile.h"
-
+/**
+æœ‰äº›æˆå‘˜æ–¹æ³•çš„è¯´æ˜è§ElfFile32.hä¸­æ³¨é‡Šï¼ŒåŠŸèƒ½ç›¸åŒï¼Œåªæ˜¯åˆ†åˆ«é’ˆå¯¹32ä½å’Œ64ä½elfæ–‡ä»¶
+*/
 class ElfFile64 : public IElfFile
 {
 public:
@@ -15,15 +17,15 @@ private:
 	DWORD m_dwShNum;
 	DWORD m_dwPhNum;
 public:
-	//Ä§·¨Êı£¨0x7f ¡°ELF¡±£©
+	//é­”æ³•æ•°ï¼ˆ0x7f â€œELFâ€ï¼‰
 	virtual BOOL  getElfMagic(char szBuf[MAXBYTE]);
 	//Elf Class 32 64
 	virtual BOOL  getElfClass(char szBuf[MAXBYTE]);
-	//Elf ±àÂë·½Ê½
+	//Elf ç¼–ç æ–¹å¼
 	virtual BOOL  getElfEncode(char szBuf[MAXBYTE]);
-	//»ñÈ¡Elf µÄ°æ±¾
+	//è·å–Elf çš„ç‰ˆæœ¬
 	virtual BOOL  getElfVersion(char szBuf[MAXBYTE]);
-	//»ñÈ¡¶ÔÆëÖµ£¬±ê¼ÇÎ´Ê¹ÓÃ×Ö½ÚµÄ¿ªÊ¼
+	//è·å–å¯¹é½å€¼ï¼Œæ ‡è®°æœªä½¿ç”¨å­—èŠ‚çš„å¼€å§‹
 	virtual BOOL  getElfABI(char szBuf[MAXBYTE]);
 	virtual void printE_type();
 	virtual void printE_Machine();
@@ -31,16 +33,16 @@ public:
 	virtual void printRemain();
 	virtual void printEhd();
 	virtual void initall();
-	//³ÌĞòÍ·Ïà¹Ø
+	//ç¨‹åºå¤´ç›¸å…³
 	virtual void printPhdTable();
 	virtual void printPhdType(int p_Type);
 	virtual void printPhdAttri(int p_Flags);
-	//Í¨¹ı³ÌĞòÍ· »ñµÃ¶¯Ì¬·ûºÅ£¨Ò»Ğ©º¯ÊıµÈ£©µÄÆ«ÒÆºÍÄÚÈİ´óĞ¡
+	//é€šè¿‡ç¨‹åºå¤´ è·å¾—åŠ¨æ€ç¬¦å·ï¼ˆä¸€äº›å‡½æ•°ç­‰ï¼‰çš„åç§»å’Œå†…å®¹å¤§å°
 	virtual int getTargetFuncInfo(const char *funcName, funcInfo32 *info);
 	virtual void printFuncInfo(const char *funcName);
-	//Í¨¹ı¼ÓÔØ¶Î£¨Ïàµ±ÓÚPEµÄ½Ú£©ºÍrva»ñµÃfa
+	//é€šè¿‡åŠ è½½æ®µï¼ˆç›¸å½“äºPEçš„èŠ‚ï¼‰å’Œrvaè·å¾—fa
 	Elf64_Addr Rva2Fa(Elf64_Addr rva);
-	//½ÚÍ·Ïà¹Ø
+	//èŠ‚å¤´ç›¸å…³
 	virtual void printShdTable();
 	virtual void printShdType(int p_Type);
 };
